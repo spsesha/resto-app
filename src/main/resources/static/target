@@ -1,0 +1,36 @@
+* button to show menu items
+* buttons to add items to cart/ order
+* button to show order
+* display total and stuff
+
+Order
+ID  TableID Date
+1   1       today
+
+
+Order Details
+OrderID(fk)  ItemID(fk) Quantity
+1            23         2
+1            2          1
+1            10         4
+
+Composite_Key(OrderID, ItemID)
+
+
+
+
+Order
+ID Date
+1  today
+
+OrderDetails
+ID TableID itemID Quantity
+1  1        23    2
+1  1        21    2
+
+
+
+
+/*insert into order_details(table_id,item_id,item_quandity) values ('1','1','2');
+insert into order_details(table_id,item_id,item_quandity) values ('1','2','3');
+insert into order_details(table_id,item_id,item_quandity) values ('2','5','6');*/

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html ng-app="resto">
+<head>
+<meta charset="utf-8">
+<title>Resto</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+<script type="text/javascript" src="angScript.js"></script>
+</head>
+<body>
+	<div class="" ng-controller="MenuController as menuCtrl">
+		<h1>List Of Objects</h1>
+		<!--LIST OF OBJETCS-->
+		<button type="button" name="View Menu" ng-click="toggleMenu()">{{itemsShowing ? "Hide" : "Show"}} Menu Items</button>
+		<button type="button" name="View Orders" ng-click="toggleOrders()">{{ordersShowing ? "Hide" : "Show"}} Order Items</button>
+		<button type="button" name="View Order Details" ng-click="toggleOrderDetails()">{{orderDetailsShowing ? "Hide" : "Show"}} Order Details Items</button>
+		<button type="button" name="View Tables" ng-click="toggleTables()">{{tablesShowing ? "Hide" : "Show"}} Tables</button>
+		<!-- ITEMS DISPLAY  -->
+		<div class="items" ng-repeat="item in items" ng-show="itemsShowing">
+				<p>{{item.name}}</p>
+				<p>{{item.price | currency}}</p>
+		</div>
+		<!-- ORDERS DISPLAY -->
+		<div class="orders" ng-repeat="order in orders" ng-show="ordersShowing">
+				<p>{{order.id}}</p>
+				<p>{{order.date | date:'medium'}}</p>
+		</div>
+		<!-- ORDER DETAILS DISPLAY -->
+		<div class="orderDetails" ng-repeat="orderDetail in orderDetails" ng-show="orderDetailsShowing">
+				<p>{{orderDetail.tableId}}</p>
+				<p>{{orderDetail.itemQuandity}}</p>
+				<p>{{orderDetail.orderId}}</p>
+				<p>{{orderDetail.itemId}}</p>
+		</div>
+		<!-- TABLE DISPLAY -->
+		<div class="tables" ng-repeat="table in tables" ng-show="tablesShowing">
+				<p>{{table.id}}</p>
+				<p>{{table.people_count}}</p>
+		</div>
+	</div>
+
+	<!-- ADD ITEMS -->
+	<h1>Adding Items</h1>
+	<form name="itemsForm" ng-controller="ItemController" ng-submit="addItem(item.name,item.price,item.category)">
+		<blockquote>
+			<b>Item Name: {{item.name}}</b><br>
+			Item Price:{{item.price}}<br>
+			Category:{{item.category}}<br>
+		</blockquote>
+		Item Name:<br>
+		<input ng-model="item.name" type="text" name="itemName"><br>
+		Item Price:<br>
+		<input ng-model="item.price" type="text" name="itemPrice"><br>
+		Category:<br>
+		<select ng-model="item.category">
+			<option value="main">Main</option>
+			<option value="starter">Starter</option>
+		</select><br>
+		<input type="submit" value="Sumbit">
+	</form>
+</body>
+</html>

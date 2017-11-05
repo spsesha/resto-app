@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html >
+<head>
+<meta charset="ISO-8859-1">
+<title>Resto</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+<script type="text/javascript" src="script.js"></script>
+</head>
+<body ng-app="REST">
+	<h1>List of Items</h1>
+	<div ng-controller="Item">
+		<button type="button" name="show_items" ng-click="showItems()">{{isItemShowing ? 'Hide' : 'Show'}} Items</button>
+		<div ng-repeat="item in items" ng-show="isItemShowing">
+			<p>The Item Id is {{item.id}}</p>
+			<p>The Item Name is {{item.name}}</p>
+			<p>The Item Price is {{item.price}}</p>
+			<p>The Item Category is {{item.category}}</p>
+			<button type="button" name="add_to_cart" ng-click="addItemToCart(item.id)">Add Item</button>
+		</div>
+	</div>
+</body>
+</html>
